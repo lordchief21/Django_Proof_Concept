@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from GestionPedidos import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('articulos/', views.upload_template),
+    path('buscar/', views.search_product)
 ]
