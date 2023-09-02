@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Estas buscando: <strong>{{query}}</strong></p>
+    {% if articles %}
+        <p>Artículos encontrados : {{articles | length}} artículos</p>
+        <ul>
+            {% for article in articles%}
+                <li>{{article.nombre}}</li>
+            {% endfor %}
+
+        </ul>
+    {% else %}
+        <p>No existe el artículo que buscas</p>
+    {% endif %}
+    </body>
+</html>
