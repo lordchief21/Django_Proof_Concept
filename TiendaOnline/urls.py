@@ -22,5 +22,6 @@ from GestionPedidos import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('articulos/', views.upload_template),
-    path('buscar/', views.search_product)
+    path('buscar/', views.search_product),
+    path('contacto/', views.contact),
 ]
