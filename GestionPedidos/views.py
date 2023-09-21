@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from more_itertools import product_index
+from django.core.mail import send_mail
+
 
 from .forms import ContactForm
 
@@ -15,6 +16,7 @@ def search_product(request):
     if request.GET["product"]:
         product = request.GET["product"]
         articles = Articulos.objects.filter(nombre__icontains = product)
+       
         return render(request, "resultado_busqueda.html", {"articles" : articles, "query": product})
     else:
         message = 'No colocaste ningún producto'
@@ -29,8 +31,9 @@ def contact(request):
         myForm = ContactForm(request.POST)
 
         if myForm.is_valid() :
-            infoForm = myForm.cleaned_data()
+            infoForm = myForm.cleaned_data
             print(infoForm)
+            send_mail(infoForm['name'],infoForm["message"], infoForm.get("email",""),["lordchief21@gmail.com"],)
         else:
             myForm = ContactForm()
     
